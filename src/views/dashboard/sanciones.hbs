@@ -1,0 +1,46 @@
+  <button class="btn btn-primary" onclick="window.location.href='/'" type="button"><h1>Volver</h1></button>
+<div class="p-4">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Fecha Captura</th>
+      <th scope="col">Expediente</th>
+      <th scope="col">Dependencia</th>
+      <th scope="col">RFC</th>
+      <th scope="col">CURP</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Género</th>
+      <th scope="col">Puesto</th>
+      <th scope="col">Sancionadora</th>
+      <th scope="col">Tipo Falta</th>
+      <th scope="col">Tipo Sanción</th>
+      <th scope="col">Causa</th>
+      <th scope="col">Multa</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {{#each dato2}}
+    <tr>
+      <td>{{fechaCaptura}}</td>
+      <td>{{expediente}}</td>
+      <td>{{institucionDependencia.nombre}}</td>
+      <td>{{servidorPublicoSancionado.rfc.rfc}}{{servidorPublicoSancionado.rfc.homoClave}}</td>
+      <td>{{servidorPublicoSancionado.curp}}</td>
+      <td>{{servidorPublicoSancionado.nombres}}</td>
+      <td>{{servidorPublicoSancionadoprimerApellido}} {{servidorPublicoSancionado.segundoApellido}}</td>
+      <td>{{servidorPublicoSancionado.genero.valor}}</td>
+      <td>{{servidorPublicoSancionado.puesto}}</td>
+      <td>{{autoridadSancionadora}}</td>
+      <td>{{tipoFalta.valor}}</td>
+      <td>{{tipoSancion.[0].valor}}</td>
+      <td>{{causaMotivoHechos}}</td>
+      <td>{{accountingFormat multa.monto}}</td>
+
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+</div>

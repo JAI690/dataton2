@@ -1,0 +1,41 @@
+<button class="btn btn-primary" onclick="window.location.href='/'" type="button"><h1>Volver</h1></button>
+<div class="p-4">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Fecha Captura</th>
+      <th scope="col">Ejercicio Fiscal</th>
+      <th scope="col">Ramo</th>
+      <th scope="col">RFC</th>
+      <th scope="col">CURP</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Género</th>
+      <th scope="col">Dependencia</th>
+      <th scope="col">Puesto</th>
+      <th scope="col">Tipor Area</th>
+      <th scope="col">Responabilidad</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each dato}}
+    <tr>
+        <td>{{fechaCaptura}}</td>
+      <td>{{ejercicioFiscal}}</td>
+      <td>{{ramo.valor}}</td>
+      <td>{{rfc}}</td>
+      <td>{{curp}}</td>
+      <td>{{nombres}}</td>
+      <td>{{primerApellido}} {{segundoApellido}}</td>
+      <td>{{genero.valor}}</td>
+      <td>{{institucionDependencia.nombre}}</td>
+      <td>{{puesto}}</td>
+      <td>{{tipoArea.[0].valor}}</td>
+      <td>{{nivelResponsabilidad.[0].valor}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+</div>
+

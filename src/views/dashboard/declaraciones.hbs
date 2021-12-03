@@ -1,0 +1,24 @@
+  <button class="btn btn-primary" onclick="window.location.href='/'" type="button"><h1>Volver</h1></button>
+<div class="p-4">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Tipo</th>
+      <th scope="col">Institucion</th>
+      <th scope="col">Situacion Patrimonial</th>
+      <th scope="col">Interes</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each dato3}}
+    <tr>
+      <td>{{metadata.tipo}}</td>
+      <td>{{metadata.institucion}}</td>
+      <td>{{declaracion.situacionPatrimonial.datosGenerales}}</td>
+      <td>{{declaracion.interes.participacion}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+</div>
