@@ -23,7 +23,7 @@ router.get('/estructura/', (req,res) => {
 
 router.get('/sanciones/', (req,res) => {
 
-    res.render("../views/dashboard/sanciones.hbs", {dato2});
+    res.render("../views/dashboard/sanciones.hbs");
 });
 
 router.get('/declaraciones/', (req,res) => {
