@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dato2 = require('../public/Data/Sistema3Servidores.json');
 
 
 const router = express.Router();
@@ -21,7 +22,7 @@ router.get('/estructura/', (req,res) => {
 });
 
 router.get('/sanciones/', (req,res) => {
-    const dato2 = require('../public/Data/Sistema3Servidores.json');
+
     res.render("../views/dashboard/sanciones.hbs", {dato2});
 });
 
