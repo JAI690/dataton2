@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const dato2 = require('../public/Data/Sistema3Servidores.json');
+const { dato2 } = require('../public/Data/Sistema3Servidores.json');
 
 
 const router = express.Router();
