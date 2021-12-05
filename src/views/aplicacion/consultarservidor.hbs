@@ -1,32 +1,22 @@
 
-<div class="p-4">
-<div class="card">
-  <h2 class="card-header">Buscar servidor público</h2>
-  <div class="card-body">
-    <h4 class="card-title">Ingresa el curp</h4>
-    <form method="POST" action="/data/servidor">
-        <input name="curp1" type="text">
-        <input type="submit" value="Buscar...">
-    </form>
-  </div>
-</div>
-</div>
 
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-4 mx-auto">
+<div class="container p-4" >
+    <div class="row" id="todo">
+        <div class="col-md-6" id="hijo">
             <div class="card text-center">
                 <div class="card-header">
-                    <h3>Ingresar</h3>
+                    <h3>Buscar servidor público</h3>
                 </div>
                 <div class="card-body">
                   <form method="POST" action="/data/servidor">
-        <input name="curp1" type="text">
-        <input type="submit" value="Buscar...">
-    </form>
+                    <div class="form-group mb-3">
+                        <label id="subtitulo" class="text-muted">Ingresa el curp: </label>
+                        <input name="curp1" type="text">
+                    </div>
+        
                         <div class="form-group mb-3">
                                 <button class="btn btn-success">
-                                    Ingresar
+                                    Buscar...
                                 </button>
                         </div>
                     </form>
@@ -35,3 +25,21 @@
         </div>
     </div>
 </div>
+
+<style>
+#subtitulo {
+    font-size: 24px;
+}
+#todo {
+  position: relative;
+}
+
+#hijo {
+
+  /* centrar vertical y horizontalmente */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 300px 0 0 -300px; /* aplicar a top y al margen izquierdo un valor negativo para completar el centrado del elemento hijo */
+}
+    </style>
