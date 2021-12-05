@@ -29,7 +29,7 @@ router.get('/sanciones/', async(req,res) => {
 
 router.get('/declaraciones/', async(req,res) => {
 
-
+    console.log(require('../public/Data/SistemaS2.json'));
     const dato3 = require('../public/Data/declaraciones.json');
     res.render("../views/dashboard/declaraciones.hbs", {dato3});
 });
