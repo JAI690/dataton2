@@ -23,7 +23,7 @@ router.get('/estructura/', (req,res) => {
 
 router.get('/sanciones/', async(req,res) => {
 
-    const data = require('../public/Data/Sistema3Servidores.json');
+    const { data } = require('../public/Data/Sistema3Servidores.json');
     res.render("../views/dashboard/sanciones.hbs", { data });
 });
 
@@ -37,7 +37,6 @@ router.get('/declaraciones/', async(req,res) => {
 router.get('/servidores/', async(req,res) => {
     
     const dato = require('../public/Data/SistemaS2.json');
-
     res.render("../views/dashboard/servidores.hbs", {dato});
 });
 
