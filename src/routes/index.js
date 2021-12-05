@@ -29,7 +29,7 @@ router.get('/sanciones/', async(req,res) => {
 
 router.get('/declaraciones/', async(req,res) => {
 
-    const file1 = await readFile('./src/public/Data/SistemaS2.json', 'utf-8');
+    const file1 = await fs.readFileSync('./src/public/Data/SistemaS2.json', 'latin1');
     const file = JSON.parse(file1);
     console.log(file);
     const dato3 = require('../public/Data/declaraciones.json');
