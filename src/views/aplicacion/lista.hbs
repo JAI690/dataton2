@@ -1,0 +1,29 @@
+<div class="container p-4">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Ramo</th>
+      <th scope="col">Institución</th>
+      <th scope="col">Puesto</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each servidoresAll}}
+    <tr>
+      <th scope="row"> <form action="/data/servidor/{{curp}}", method="POST"><button>{{nombres}} {{primerApellido}} {{segundoApellido}}</button></form></th>
+      <td>{{ramo.valor}}</td>
+      <td>{{institucionDependencia.nombre}}</td>
+      <td>{{puesto}}</td>
+    </tr>
+    {{/each}}
+</table>
+</div>
+
+<style>
+    button{
+        border: none;
+        background-color: transparent;
+        color:blue;
+    }
+</style>
