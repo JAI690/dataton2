@@ -38,8 +38,9 @@ router.get('/declaraciones/', async(req,res) => {
 });
 
 router.get('/servidores/', async(req,res) => {
-    const file = await readFile('./src/public/Data/SistemaS2.json', 'utf-8')
-    const dato = JSON.parse(file);
+    //const file = await readFile('./src/public/Data/SistemaS2.json', 'utf-8')
+    //const dato = JSON.parse(file);
+    const dato = [];
     res.render("../views/dashboard/servidores.hbs", {dato});
 });
 
