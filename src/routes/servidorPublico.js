@@ -3,29 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-var ObjectId = mongoose.Schema.Types.ObjectId;
 
-const schemaServidor = new Schema({
-    _id: ObjectId,
-    id: {type: String},
-    fechaCaptura: {type: Date},
-    ejercicioFiscal: {type: Number},
-    ramo: [{clave: Number, valor: {type: String}}],
-    rfc: {type: String},
-    curp: {type: String},
-    nombres: {type: String},
-    primerApellido: {type: String},
-    segundoApellido: {type: String},
-    genero: [{clave: String, valor:String}],
-    institucionDependencia: [{nombre: String, clave:String, siglas:String}],
-    puesto: {type: String},
-    tipoArea: [[{clave:String, valor:String}],[{clave:String, valor:String}]],
-    tipoProcedimiento: [[{clave:String,valor:String}],[{clave:String,valor:String}]],
-    nivelResponsabilidad: [{clave:String,valor:String}],
-    superiorInmediato: [{nombres:String, genero:{clave:String,valor:String}, primerApellido:String, segundoApellido:String, curp:String, rfc:String, puesto:{nombre:String,nivel:String}}]
-}, {collection: 'servidores'});
-
-const  servidorModel  = mongoose.model('servidor', schemaServidor);
+const servidorModel = require('../models/servidores');
+const sancionModel = require('../models/sanciones');
+const declaracionModel = require('../models/declaraciones');
 
 router.get('/servidor', (req,res) => {
     res.render('../views/aplicacion/consultarservidor.hbs');
@@ -44,7 +25,7 @@ router.post('/servidor', async(req,res) => {
     
     var {curp1} = req.body;
     // Buscar por CURP y devolver valores con id unicos
-    const servidores = await servidorModel.aggregate([{$match: {curp: curp1}},{$group:{_id: "$id", id:{ $first: "$_id"}}}])
+    const servidores = await servidorModel.aggregate([{$match: {curp: curp1}},{$group:{_id: "$id", id:{ $first: "$_id"}}}]);
     
     // Poner todos los _id devueltos de la consulta anterior en un array
     servidoresid = [];
@@ -53,8 +34,18 @@ router.post('/servidor', async(req,res) => {
     // Buscar los documentos a partir de _id devueltos
     const servidoresAll = await servidorModel.find({_id:servidoresid}).lean();
 
-    console.log(servidoresAll);
-    res.render('../views/aplicacion/servidores.hbs',{servidoresAll});
+    const relacionados = await servidorModel.aggregate([{$match: {"superiorInmediato.curp": curp1}}, {$group:{_id: "$id", id:{ $first: "$_id"}}}]);
+    relacionadosid = [];
+    for(items in relacionados){relacionadosid.push(relacionados[items].id);}
+    const relacionadosAll = await servidorModel.find({_id:relacionadosid}).lean();
+
+
+    // Buscar sanciones
+    const sanciones = await sancionModel.find({"servidorPublicoSancionado.curp": curp1}).lean();
+    console.log(sanciones);
+
+    const declaraciones = await declaracionModel.find({"declaracion.situacionPatrimonial.datosGenerales.curp": curp1}).sort({"metadata.actualizacion": 0}).lean();
+    res.render('../views/aplicacion/servidores.hbs',{servidoresAll, relacionadosAll, sanciones, declaraciones});
 });
 
 module.exports = router;
