@@ -14,7 +14,7 @@ router.get('/', (req,res) => {
     //const datos1 = convertir(dato,'id');
 
     //console.log(datos);
-    res.render("../views/principal.hbs");
+    res.render("../views/aplicacion/consultarservidor.hbs");
 });
 
 router.get('/estructura/', (req,res) => {
