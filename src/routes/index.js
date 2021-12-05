@@ -24,23 +24,21 @@ router.get('/estructura/', (req,res) => {
 
 router.get('/sanciones/', async(req,res) => {
 
-    const file = await readFile('./src/public/Data/Sistema3Servidores.json', 'utf-8')
-    const data = JSON.parse(file);
-
+    const data = require('../public/Data/Sistema3Servidores.json');
     res.render("../views/dashboard/sanciones.hbs", { data });
 });
 
 router.get('/declaraciones/', async(req,res) => {
 
-    const file = await readFile('./src/public/Data/declaraciones.json', 'utf-8')
-    const dato3 = JSON.parse(file);
+
+    const dato3 = require('../public/Data/declaraciones.json');
     res.render("../views/dashboard/declaraciones.hbs", {dato3});
 });
 
 router.get('/servidores/', async(req,res) => {
-    //const file = await readFile('./src/public/Data/SistemaS2.json', 'utf-8')
-    //const dato = JSON.parse(file);
-    const dato = [];
+    
+    const dato = require('../public/Data/SistemaS2.json');
+
     res.render("../views/dashboard/servidores.hbs", {dato});
 });
 
