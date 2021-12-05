@@ -1,0 +1,1 @@
+//mongoimport --uri "mongodb+srv://jai690:Lamaquina10@practice.pzjne.mongodb.net/corrupcion?ssl=true" --collection sanciones --drop --jsonArray --file src/public/Data/Sistema3Servidores.json
