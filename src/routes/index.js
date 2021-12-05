@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { dato2 } = require('../public/Data/Sistema3Servidores.json');
 const { readFile } = require('fs/promises');
 
 
