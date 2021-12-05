@@ -29,7 +29,9 @@ router.get('/sanciones/', async(req,res) => {
 
 router.get('/declaraciones/', async(req,res) => {
 
-    console.log(require('../public/Data/SistemaS2.json'));
+    const file1 = await readFile('./src/public/Data/SistemaS2.json', 'utf-8');
+    const file = JSON.parse(file1);
+    console.log(file);
     const dato3 = require('../public/Data/declaraciones.json');
     res.render("../views/dashboard/declaraciones.hbs", {dato3});
 });
