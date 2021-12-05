@@ -29,7 +29,7 @@ router.get('/sanciones/', async(req,res) => {
 
 router.get('/declaraciones/', async(req,res) => {
 
-    const file1 = await readFile('./src/public/Data/SistemaS2.json', 'latin1');
+    //const file1 = await readFile('./src/public/Data/SistemaS2.json', 'latin1');
     
     const prueba = '[{"prueba":2},{"prueba":3}]';
     console.log(prueba);
@@ -37,8 +37,9 @@ router.get('/declaraciones/', async(req,res) => {
     console.log(prueba2)
     //const file = JSON.parse(file1);
     //console.log(file);
-    const dato3 = require('../public/Data/declaraciones.json');
-    res.render("../views/dashboard/declaraciones.hbs", {dato3});
+    //const dato3 = require('../public/Data/declaraciones.json');
+    //res.render("../views/dashboard/declaraciones.hbs", {dato3});
+    res.send(prueba2);
 });
 
 router.get('/servidores/', async(req,res) => {
