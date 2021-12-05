@@ -1,0 +1,128 @@
+[
+    {
+      "id": "8a54a1ce-98b4-40f9-a52c-a272ed56f238",
+      "fechaCaptura": "2018-05-21T17:32:28Z",
+      "ejercicioFiscal": "2018",
+      "ramo": {
+        "clave": 23,
+        "valor": "Provisiones salariales y económicas"
+      },
+      "rfc": "ROCA9005303Z8",
+      "curp": "ROCA900530MYNDLL04",
+      "nombres": "Alejandra",
+      "primerApellido": "Rodríguez",
+      "segundoApellido": "Calderón",
+      "genero": {
+        "clave": "F",
+        "valor": "FEMENINO"
+      },
+      "institucionDependencia": {
+        "nombre": "SECRETARÍA DE ENERGÍA",
+        "siglas": "SENER",
+        "clave": "XYZ987"
+      },
+      "puesto": {
+        "nombre": "DIRECTOR DE ADMINISTRACIÓN DE BIENES INFORMÁTICOS",
+        "nivel": "M11"
+      },
+      "tipoArea": [
+        {
+          "clave": "T",
+          "valor": "TÉCNICA"
+        },
+        {
+          "clave": "RE",
+          "valor": "RESPONSABLE DE LA EJECUCIÓN"
+        }
+      ],
+      "nivelResponsabilidad": [
+        {
+          "clave": "R",
+          "valor": "RESOLUCIÓN"
+        }
+      ],
+      "tipoProcedimiento": [
+        {
+          "clave": 1,
+          "valor": ""
+        }
+      ],
+      "superiorInmediato": {
+        "nombres": "PEDRO",
+        "primerApellido": "CRUZ",
+        "segundoApellido": "MEDINA",
+        "curp": "CUMP770826HMNRDD96",
+        "rfc": "CUMP7708269R6",
+        "puesto": {
+          "nombre": "Director General",
+          "nivel": "CFM2300003"
+        }
+      },
+      "observaciones": ""
+    },
+      {
+          "id": "1d6f5b03-0e18-4b1b-8b73-e11680a89bb8",
+          "fechaCaptura": "2016-06-03T07:07:26Z",
+          "ejercicioFiscal": "2016",
+          "ramo": {
+            "clave": 28,
+            "valor": "Participaciones a Entidades Federativas y Municipios"
+          },
+          "rfc": "CÓGP760116E91",
+          "curp": "CÓGP760116HAGRVT08",
+          "nombres": "Patricio",
+          "primerApellido": "Córdova",
+          "segundoApellido": "Guevara",
+          "genero": {
+            "clave": "M",
+            "valor": "MASCULINO"
+          },
+          "institucionDependencia": {
+            "nombre": "SERVICIO DE INFORMACION AGROALIMENTARIA Y PESQUERA",
+            "clave": "ERV",
+            "siglas": "ICIO"
+          },
+          "puesto": "Jefe de Departamento",
+          "tipoArea": [
+            {
+              "clave": "RC",
+              "valor": "RESPONSABLE DE LA CONTRATACIÓN"
+            },
+            {
+              "clave": "T",
+              "valor": "TÉCNICA"
+            },
+            {
+              "clave": "RE",
+              "valor": "RESPONSABLE DE LA EJECUCIÓN"
+            }
+          ],
+          "tipoProcedimiento": [
+            {
+              "clave": 1,
+              "valor": "CONTRATACIONES PÚBLICAS"
+            }
+          ],
+          "nivelResponsabilidad": [
+            {
+              "clave": "A",
+              "valor": "ATENCIÓN"
+            }
+          ],
+          "superiorInmediato": {
+            "nombres": "Safiya",
+            "genero": {
+              "clave": "F",
+              "valor": "FEMENINO"
+            },
+            "primerApellido": "MONTOUTO",
+            "segundoApellido": "TALSI",
+            "curp": "MOTS831018MDFNLF54",
+            "rfc": "MOTS831018A14",
+            "puesto": {
+              "nombre": "Director General",
+              "nivel": "K31"
+            }
+          }
+        }
+    ]
