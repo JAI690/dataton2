@@ -256,14 +256,15 @@
                         </tr>
                         {{#each relacionadosAll}}
                         <tr>
-                            <th scope="row">{{nombres}} {{primerApellido}} {{segundoApellido}}</th>
+                            <th scope="row"><form action="/data/servidor/{{curp}}", method="POST"><button>{{nombres}} {{primerApellido}} {{segundoApellido}}</button></form></th>
                             <td>{{ejercicioFiscal}}</td>
                             <td>Empleado a cargo</td>
                         </tr>
                         {{/each}}
                         {{#each servidoresAll}}
                         <tr>
-                            <th scope="row">{{superiorInmediato.nombres}} {{superiorInmediato.primerApellido}} {{superiorInmediato.segundoApellido}}</th>
+                            <th scope="row"><form action="/data/servidor/{{superiorInmediato.curp}}", method="POST"><button>{{superiorInmediato.nombres}} {{superiorInmediato.primerApellido}} {{superiorInmediato.segundoApellido}}</button></form></th>
+                            
                             <td>{{ejercicioFiscal}}</td>
                             <td>Jefe Inmediato</td>
                         </tr>
@@ -463,5 +464,13 @@
     }
     #disabled{
         background-color: white;
+    }
+</style>
+
+<style>
+    button{
+        border: none;
+        background-color: transparent;
+        color:blue;
     }
 </style>
