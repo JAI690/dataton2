@@ -1,46 +1,461 @@
 
 
+{{#unless servidoresAll}}
+    <!-- Se encontró sólo como jefe de alguien más -->
+    {{#if relacionadosAll}}
+        <div class="p-5">
+            <div class="row g-3">
+                <div class="col-sm-7">
+                <div class="card">
+                <div class="card-body">
+                    {{#each relacionadosAll}}
+                        {{#if @first}}
+                            <h2 class="card-title" stle="align-text:center;">Servidor Público</h2>
+                            <h4 class="card-subtitle mb-2 text-muted" stle="align-text:center;">No encontramos su registro individual</h4>
+                            <form class="row g-3">
+                                <div class="col-md-5">
+                                    <label for="inputEmail4" class="form-label">Nombre</label>
+                                    <input type="text"  class="form-control" value="{{superiorInmediato.nombres}} {{superiorInmediato.primerApellido}} {{superiorInmediato.segundoApellido}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputPassword4" class="form-label">CURP</label>
+                                    <input type="text" class="form-control"  value="{{superiorInmediato.curp}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" class="form-label">RFC</label>
+                                    <input type="text" class="form-control"  value="{{superiorInmediato.rfc}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" class="form-label">Año</label>
+                                    <input type="text" class="form-control"  value="{{ejercicioFiscal}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" class="form-label">Puesto</label>
+                                    <input type="text" class="form-control"  value="{{superiorInmediato.puesto.nombre}} - {{superiorInmediato.puesto.nivel}} " id="disabled" disabled >
+                                </div>
+                            </form>
+                        {{/if}}
+                    {{/each}}
+                </div>
+                </div>
+            </div>
+   
+            <div class="col-sm-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Relacionados</h2> 
+                    <table class="table table-striped">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Relacion</th>
+                        </tr>
+                        {{#each relacionadosAll}}
+                        <tr>
+                            <th scope="row">{{nombres}} {{primerApellido}} {{segundoApellido}}</th>
+                            <td>{{ejercicioFiscal}}</td>
+                            <td>Empleado a cargo</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {{else}}
+        <!-- Solo se encontró en sanciones -->
+        {{#if sanciones}}
+            <h1>Solo se encontro en sanciones</h1>
+
+            <div class="p-5">
+            <div class="row g-3">
+                <div class="col-sm-7">
+                <div class="card">
+                <div class="card-body">
+                    {{#each sanciones}}
+                        {{#if @first}}
+                            <h2 class="card-title" stle="align-text:center;">Servidor Público</h2>
+                            <h4 class="card-subtitle mb-2 text-muted" stle="align-text:center;">No encontramos su registro individual</h4>
+                            <form class="row g-3">
+                                <div class="col-md-5">
+                                    <label for="inputEmail4" class="form-label">Nombre</label>
+                                    <input type="text"  class="form-control" value="{{servidorPublicoSancionado.nombres}} {{servidorPublicoSancionado.primerApellido}} {{servidorPublicoSancionado.segundoApellido}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputPassword4" class="form-label">CURP</label>
+                                    <input type="text" class="form-control"  value="{{servidorPublicoSancionado.curp}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" class="form-label">RFC</label>
+                                    <input type="text" class="form-control"  value="{{servidorPublicoSancionado.rfc.rfc}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputAddress" class="form-label">Fecha</label>
+                                    <input type="text" class="form-control"  value="{{fechaCaptura}}" id="disabled" disabled >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputAddress" class="form-label">Puesto</label>
+                                    <input type="text" class="form-control"  value="{{servidorPublicoSancionado.puesto}}" id="disabled" disabled >
+                                </div>
+                            </form>
+                        {{/if}}
+                    {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Relacionados</h2> 
+                    <table class="table table-striped">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Relacion</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="p-5">
+            <div class="row">
+                {{#each sanciones}}
+                <div class="col-sm-6 mb-3">
+                <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Fecha: {{fechaCaptura}}</h2>
+                    <form class="row g-3">
+                        <div class="col-md-8">
+                            <label for="inputPassword4" class="form-label">Id</label>
+                            <input type="text" class="form-control"  value="{{id}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPassword4" class="form-label">Expediente</label>
+                            <input type="text" class="form-control"  value="{{expediente}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">institucion Dependencia</label>
+                            <input type="text" class="form-control"  value="{{institucionDependencia.nombre}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Puesto</label>
+                            <input type="text" class="form-control"  value="{{servidorPublicoSancionado.puesto}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Autoridad Sancionadora</label>
+                            <input type="text" class="form-control"  value="{{autoridadSancionadora}}" id="disabled" disabled >
+                        </div>
+                        <hr>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tipo de Falta</label>
+                            <input type="text" class="form-control"  value="{{tipoFalta.valor}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Descripción de Falta</label>
+                            <input type="text" class="form-control"  value="{{tipoFalta.descripcion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputPassword4" class="form-label">Causa</label>
+                            <input type="text" class="form-control"  value="{{causaMotivoHechos}}" id="disabled" disabled >
+                        </div>
+                         <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tipo de Sancion</label>
+                            <input type="text" class="form-control"  value="{{tipoSancion.0.valor}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Descripción de Sancion</label>
+                            <input type="text" class="form-control"  value="{{tipoSancion.0.descripcion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Resolución</label>
+                            <input type="text" class="form-control"  value="{{resolucion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Multa</label>
+                            <input type="text" class="form-control"  value="{{multa.monto}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputPassword4" class="form-label">Observaciones</label>
+                            <textarea class="form-control"  value="" id="disabled" disabled >{{observaciones}}</textarea>
+                        </div>
+
+                    </form>
+
+                    
+                </div>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{else}}
+        <!-- No se encontró ningun registro -->
+        <div class="p-4">
+        <h1>No encontrado</h1>
+        </div>
+        {{/if}}
+    {{/if}}
+
+<!-- Se encontró correctamente -->
+{{else}}
+    <div class="p-5">
+        <div class="row g-3">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                {{#each servidoresAll}}
+                    {{#if @first}}
+                        <h2 class="card-title" stle="align-text:center;">Servidor Público</h2>
+                    
+                        <form class="row g-3">
+                            <div class="col-md-5">
+                                <label for="inputEmail4" class="form-label">Nombre</label>
+                                <input type="text"  class="form-control" value="{{nombres}} {{primerApellido}} {{segundoApellido}}" id="disabled" disabled >
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputPassword4" class="form-label">CURP</label>
+                                <input type="text" class="form-control"  value="{{curp}}" id="disabled" disabled >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="inputAddress" class="form-label">RFC</label>
+                                <input type="text" class="form-control"  value="{{rfc}}" id="disabled" disabled >
+                            </div>
+                            <div class="col-md-12">
+                                <label for="inputAddress" class="form-label">Ramo</label>
+                                <input type="text" class="form-control"  value="{{ramo.valor}}" id="disabled" disabled >
+                            </div>
+                            <div class="col-md-8">
+                                <label for="inputAddress" class="form-label">Institucion</label>
+                                <input type="text" class="form-control"  value="{{institucionDependencia.nombre}}" id="disabled" disabled >
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputAddress" class="form-label">Puesto</label>
+                                <input type="text" class="form-control"  value="{{puesto}}" id="disabled" disabled >
+                            </div>
+                        </form>
+                    {{/if}}
+                {{/each}}
+                </div>
+                </div>
+            </div>
+  
+            <div class="card col-md-6">
+                <div class="card-body">
+                    <h2 class="card-title">Relacionados</h2> 
+                    <table class="table table-striped">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Relacion</th>
+                        </tr>
+                        {{#each relacionadosAll}}
+                        <tr>
+                            <th scope="row">{{nombres}} {{primerApellido}} {{segundoApellido}}</th>
+                            <td>{{ejercicioFiscal}}</td>
+                            <td>Empleado a cargo</td>
+                        </tr>
+                        {{/each}}
+                        {{#each servidoresAll}}
+                        <tr>
+                            <th scope="row">{{superiorInmediato.nombres}} {{superiorInmediato.primerApellido}} {{superiorInmediato.segundoApellido}}</th>
+                            <td>{{ejercicioFiscal}}</td>
+                            <td>Jefe Inmediato</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revisar si tiene sanciones o no -->
+    {{#if sanciones}}
+    <div class="p-5">
+            <div class="row">
+                {{#each sanciones}}
+                <div class="col-sm-6 mb-3">
+                <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Fecha: {{fechaCaptura}}</h2>
+                    <form class="row g-3">
+                        <div class="col-md-8">
+                            <label for="inputPassword4" class="form-label">Id</label>
+                            <input type="text" class="form-control"  value="{{id}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPassword4" class="form-label">Expediente</label>
+                            <input type="text" class="form-control"  value="{{expediente}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">institucion Dependencia</label>
+                            <input type="text" class="form-control"  value="{{institucionDependencia.nombre}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Puesto</label>
+                            <input type="text" class="form-control"  value="{{servidorPublicoSancionado.puesto}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Autoridad Sancionadora</label>
+                            <input type="text" class="form-control"  value="{{autoridadSancionadora}}" id="disabled" disabled >
+                        </div>
+                        <hr>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tipo de Falta</label>
+                            <input type="text" class="form-control"  value="{{tipoFalta.valor}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Descripción de Falta</label>
+                            <input type="text" class="form-control"  value="{{tipoFalta.descripcion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputPassword4" class="form-label">Causa</label>
+                            <input type="text" class="form-control"  value="{{causaMotivoHechos}}" id="disabled" disabled >
+                        </div>
+                         <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tipo de Sancion</label>
+                            <input type="text" class="form-control"  value="{{tipoSancion.0.valor}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Descripción de Sancion</label>
+                            <input type="text" class="form-control"  value="{{tipoSancion.0.descripcion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Resolución</label>
+                            <input type="text" class="form-control"  value="{{resolucion}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Multa</label>
+                            <input type="text" class="form-control"  value="{{multa.monto}}" id="disabled" disabled >
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputPassword4" class="form-label">Observaciones</label>
+                            <textarea class="form-control"  value="" id="disabled" disabled >{{observaciones}}</textarea>
+                        </div>
+
+                    </form>
+
+                    
+                </div>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{else}}
+        <div class="p-5">
+            <div class="row">
+                <div class="col-sm-12 mb-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h2 style="text-align: center;" class="card-title">Sin Sanciones</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
 
 <div class="p-5">
-<div class="row g-3">
-<div class="card col-md-6">
-  <div class="card-body">
-      <h2 class="card-title" stle="align-text:center;">Servidor Público</h2>
-{{#each servidoresAll}}
-{{#if @first}}
-<form class="row g-3">
-  <div class="col-md-3">
-    <label for="inputEmail4" class="form-label">Nombre</label>
-    <input type="text"  class="form-control" value="{{nombres}} {{primerApellido}} {{segundoApellido}}" id="disabled" disabled >
-  </div>
-  <div class="col-md-3">
-    <label for="inputPassword4" class="form-label">CURP</label>
-    <input type="text" class="form-control"  value="{{curp}}" id="disabled" disabled >
-  </div>
-  <div class="col-md-3">
-    <label for="inputAddress" class="form-label">RFC</label>
-    <input type="text" class="form-control"  value="{{rfc}}" id="disabled" disabled >
-  </div>
-   <div class="col-md-5">
-    <label for="inputAddress" class="form-label">Ramo</label>
-    <input type="text" class="form-control"  value="{{ramo.valor}}" id="disabled" disabled >
-  </div>
-   <div class="col-md-3">
-    <label for="inputAddress" class="form-label">Institucion</label>
-    <input type="text" class="form-control"  value="{{institucionDependencia.nombre}}" id="disabled" disabled >
-  </div>
-  <div class="col-md-3">
-    <label for="inputAddress" class="form-label">Puesto</label>
-    <input type="text" class="form-control"  value="{{puesto}}" id="disabled" disabled >
-  </div>
+    <div class="row g-3">
+        {{#each declaraciones}}
+        <div class="col-sm-6 p-2 mb-3">
+        <div class="card ">
+            <div class="card-body">
+                <h3 class="card-title" >Fecha: {{dateFormat metadata.actualizacion}}</h3>
+                <form class="row g-3">
+                    <hr>
+                        <h4 class="card-subtitle mb-2 text-muted">Datos Generales</h4>
 
-</form>
-{{/if}}
-{{/each}}
+                    <div class="col-md-8">
+                        <label for="inputPassword4" class="form-label">Id</label>
+                        <input type="text" class="form-control"  value="{{id}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputPassword4" class="form-label">Tipo</label>
+                        <input type="text" class="form-control"  value="{{metadata.tipo}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputAddress" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.domicilioDeclarante.domicilioMexico.calle}} #{{declaracion.situacionPatrimonial.domicilioDeclarante.domicilioMexico.numeroExterior}}, C.P. {{declaracion.situacionPatrimonial.domicilioDeclarante.domicilioMexico.codigoPostal}}, {{declaracion.situacionPatrimonial.domicilioDeclarante.domicilioMexico.municipioAlcaldia.valor}}, {{declaracion.situacionPatrimonial.domicilioDeclarante.domicilioMexico.entidadFederativa.valor}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputAddress" class="form-label">Estado Civil</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.datosGenerales.situacionPersonalEstadoCivil.valor}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputAddress" class="form-label">Dependientes Económicos</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.datosDependienteEconomico.dependienteEconomico.length}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-5">
+                        <label for="inputAddress" class="form-label">Estudios</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.datosCurricularesDeclarante.escolaridad.0.carreraAreaConocimiento}}" id="disabled" disabled >
+                    </div>
+                    <hr>
+                        <h4 class="card-subtitle mb-2 text-muted">Cargo</h4>
+
+                    <div class="col-md-12">
+                        <label for="inputAddress" class="form-label">Institución</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.datosEmpleoCargoComision.nombreEntePublico}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Puesto</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.datosEmpleoCargoComision.empleoCargoComision}}" id="disabled" disabled >
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label for="inputAddress" class="form-label">Sueldo</label>
+                        <input type="text" class="form-control"  value="{{ accountingFormat declaracion.situacionPatrimonial.ingresos.remuneracionMensualCargoPublico.valor}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputAddress" class="form-label">Total Ingresos</label>
+                        <input type="text" class="form-control"  value="{{ accountingFormat declaracion.situacionPatrimonial.ingresos.totalIngresosMensualesNetos.valor}}" id="disabled" disabled >
+                    </div>
+
+                    <hr>
+                        <h4 class="card-subtitle mb-2 text-muted">Patrimonio</h4>
+
+
+                    <div class="col-md-3">
+                        <label for="inputAddress" class="form-label">Bienes Inmuebles</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.bienesInmuebles.bienInmueble.length}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputAddress" class="form-label">Autos</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.vehiculos.vehiculo.length}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="inputAddress" class="form-label">Bienes Muebles</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.bienesMuebles.bienMueble.length}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputAddress" class="form-label">Inversiones</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.inversiones.inversion.length}}" id="disabled" disabled >
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputAddress" class="form-label">Adeudos</label>
+                        <input type="text" class="form-control"  value="{{declaracion.situacionPatrimonial.adeudos.adeudo.length}}" id="disabled" disabled >
+                    </div>
+
+                    
+                </form>
+            </div>
+        </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
-</div>
-</div>
-</div>
+
+
+
+{{/unless}}
 
 <style>
     input:disabled{
