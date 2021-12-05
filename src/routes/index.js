@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { dato2 } = require('../public/Data/Sistema3Servidores.json');
+const { readFile } = require('fs/promises');
 
 
 const router = express.Router();
@@ -21,20 +22,24 @@ router.get('/estructura/', (req,res) => {
     res.render("../views/dashboard/datos.hbs");
 });
 
-router.get('/sanciones/', (req,res) => {
+router.get('/sanciones/', async(req,res) => {
 
-    res.render("../views/dashboard/sanciones.hbs");
+    const file = await readFile('./src/public/Data/Sistema3Servidores.json', 'utf-8')
+    const data = JSON.parse(file);
+
+    res.render("../views/dashboard/sanciones.hbs", { data });
 });
 
-router.get('/declaraciones/', (req,res) => {
-    const dato2 = require('../public/Data/declaraciones.json');
+router.get('/declaraciones/', async(req,res) => {
+
+    const file = await readFile('./src/public/Data/declaraciones.json', 'utf-8')
+    const dato3 = JSON.parse(file);
     res.render("../views/dashboard/declaraciones.hbs", {dato3});
 });
 
-router.get('/servidores/', (req,res) => {
-    //var data = fs.readFileSync('Data/SistemaS2.json', 'utf8');
-    //var dato = JSON.parse(data);
-    const dato = require('../public/Data/SistemaS2.json');
+router.get('/servidores/', async(req,res) => {
+    const file = await readFile('./src/public/Data/SistemaS2.json', 'utf-8')
+    const dato = JSON.parse(file);
     res.render("../views/dashboard/servidores.hbs", {dato});
 });
 

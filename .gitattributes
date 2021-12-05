@@ -1,3 +1,4 @@
 declaraciones.json filter=lfs diff=lfs merge=lfs -text
 Sistema3Servidores.json filter=lfs diff=lfs merge=lfs -text
 SistemaS2.json filter=lfs diff=lfs merge=lfs -text
+1.json filter=lfs diff=lfs merge=lfs -text
