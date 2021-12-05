@@ -55,7 +55,6 @@ router.post('/servidor/:curp1', async(req,res) => {
 
     // Buscar sanciones
     const sanciones = await sancionModel.find({"servidorPublicoSancionado.curp": curp1}).lean();
-    console.log(sanciones);
 
     const declaraciones = await declaracionModel.find({"declaracion.situacionPatrimonial.datosGenerales.curp": curp1}).sort({"metadata.actualizacion": 0}).lean();
     res.render('../views/aplicacion/servidores.hbs',{servidoresAll, relacionadosAll, sanciones, declaraciones});
