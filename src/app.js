@@ -5,7 +5,7 @@ const path = require('path');
 
 // Inicialización
 const app = express();
-
+require('./database')
 
 // Settings
 app.set('port', process.env.PORT || 4000);
@@ -26,6 +26,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', require('./routes'));
+app.use('/data', require('./routes/servidorPublico'));
 
 // Public
 app.use(express.static(path.join(__dirname,'public')));
