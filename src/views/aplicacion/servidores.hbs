@@ -1,0 +1,52 @@
+
+
+
+<div class="p-5">
+<div class="row g-3">
+<div class="card col-md-6">
+  <div class="card-body">
+      <h2 class="card-title" stle="align-text:center;">Servidor Público</h2>
+{{#each servidoresAll}}
+{{#if @first}}
+<form class="row g-3">
+  <div class="col-md-3">
+    <label for="inputEmail4" class="form-label">Nombre</label>
+    <input type="text"  class="form-control" value="{{nombres}} {{primerApellido}} {{segundoApellido}}" id="disabled" disabled >
+  </div>
+  <div class="col-md-3">
+    <label for="inputPassword4" class="form-label">CURP</label>
+    <input type="text" class="form-control"  value="{{curp}}" id="disabled" disabled >
+  </div>
+  <div class="col-md-3">
+    <label for="inputAddress" class="form-label">RFC</label>
+    <input type="text" class="form-control"  value="{{rfc}}" id="disabled" disabled >
+  </div>
+   <div class="col-md-5">
+    <label for="inputAddress" class="form-label">Ramo</label>
+    <input type="text" class="form-control"  value="{{ramo.valor}}" id="disabled" disabled >
+  </div>
+   <div class="col-md-3">
+    <label for="inputAddress" class="form-label">Institucion</label>
+    <input type="text" class="form-control"  value="{{institucionDependencia.nombre}}" id="disabled" disabled >
+  </div>
+  <div class="col-md-3">
+    <label for="inputAddress" class="form-label">Puesto</label>
+    <input type="text" class="form-control"  value="{{puesto}}" id="disabled" disabled >
+  </div>
+
+</form>
+{{/if}}
+{{/each}}
+</div>
+</div>
+</div>
+</div>
+
+<style>
+    input:disabled{
+        background:rgb(129, 67, 67);
+    }
+    #disabled{
+        background-color: white;
+    }
+</style>
